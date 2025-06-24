@@ -74,7 +74,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
                   <p class="role-title">{experience.role}</p>
                 </div>
               </div>
-              
+
               <div class="duration-section">
                 <time class="duration-text">
                   {formatDate(experience.startDate)} -{" "}
@@ -83,10 +83,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
                     : "Present"}
                 </time>
                 <span class="duration-length">
-                  {calculateDuration(
-                    experience.startDate,
-                    experience.endDate
-                  )}
+                  {calculateDuration(experience.startDate, experience.endDate)}
                 </span>
               </div>
             </div>
@@ -98,9 +95,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
                 <div class="achievements">
                   <ul class="achievements-list">
                     {experience.achievements.map((achievement, achIndex) => (
-                      <li class="achievement-item">
-                        {achievement}
-                      </li>
+                      <li class="achievement-item">{achievement}</li>
                     ))}
                   </ul>
                 </div>
@@ -110,9 +105,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
                 <div class="technologies">
                   <ul class="tech-list">
                     {experience.technologies.map((tech, techIndex) => (
-                      <li class="tech-item">
-                        {tech}
-                      </li>
+                      <li class="tech-item">{tech}</li>
                     ))}
                   </ul>
                 </div>

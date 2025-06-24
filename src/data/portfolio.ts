@@ -18,7 +18,7 @@ export const workExperiences: WorkExperience[] = [
     company: "Blossom",
     role: "Backend Developer",
     logo: "/images/blossom-logo.svg",
-    startDate: "2023-01-01",
+    startDate: "2023-02-01 00:00:00",
     description:
       "Developed online banking software using cutting-edge technologies, including Node.js, GraphQL, and PostgreSQL. Proficient in crafting complex database queries and optimizing them to enhance performance. Expertise in utilizing the Sequelize ORM for efficient data management.",
     technologies: ["Node.js", "GraphQL", "MongoDB", "PostgreSQL", "Sequelize"],
@@ -33,8 +33,8 @@ export const workExperiences: WorkExperience[] = [
     company: "HelloBuild",
     role: "Full Stack Developer",
     logo: "/images/hellobuild-logo.svg",
-    startDate: "2022-01-01",
-    endDate: "2022-12-31",
+    startDate: "2021-07-01 00:00:00",
+    endDate: "2023-02-28 23:59:59",
     description:
       "Collaborated on projects for clients such as Identifee and Homecu, facilitating the development of scalable platforms. Utilized technologies including Node.js, React.js, CSS, and SQL databases (specifically PostgreSQL). Proficient in handling queries and ORM tools like Sequelize. Proficient in API development and experienced in utilizing GraphQL for efficient data retrieval.",
     technologies: [
@@ -57,8 +57,8 @@ export const workExperiences: WorkExperience[] = [
     company: "Fluvip",
     role: "Full Stack Developer",
     logo: "/images/fluvip-logo.svg",
-    startDate: "2021-01-01",
-    endDate: "2021-12-31",
+    startDate: "2021-01-01 00:00:00",
+    endDate: "2021-07-31 23:59:59",
     description:
       "Contributed to the development of a platform connecting brands with top social media influencers across various platforms (Twitter, Facebook, Instagram, YouTube, Vine, and Snapchat). Primarily focused on React.js and Node.js development, leveraging AWS services like CodePipeline and Lambda to build a robust platform for seamless brand-influencer collaboration.",
     technologies: [
@@ -82,8 +82,8 @@ export const workExperiences: WorkExperience[] = [
     company: "Atlanticsoft",
     role: "Backend Developer",
     logo: "/images/atlanticsoft-logo.svg",
-    startDate: "2020-01-01",
-    endDate: "2020-12-31",
+    startDate: "2018-12-01 00:00:00",
+    endDate: "2021-01-31 23:59:59",
     description:
       "Developed a Google Chrome extension to automate dropshipping processes for major e-commerce platforms such as Amazon, eBay, and Best Buy. Successfully processed thousands of orders within minutes. Utilized technologies including Node.js, Python, and AWS services such as Lambda, ECS, and queues to streamline and enhance the dropshipping workflow.",
     technologies: [
