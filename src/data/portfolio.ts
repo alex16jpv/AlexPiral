@@ -5,9 +5,9 @@ export const personalData: PersonalData = {
   role: "Backend Developer",
   bio: "Passionate backend developer with frontend experience, specializing in scalable systems, clean code practices, and modern web technologies. I build robust applications that solve real-world problems.",
   contact: {
-    email: "alexander@alexpiral.com",
-    github: "https://github.com/alexpiral",
-    linkedin: "https://linkedin.com/in/alexander-valencia",
+    email: "contactportfolio@alexpiral.com",
+    github: "https://github.com/alex16jpv",
+    linkedin: "https://www.linkedin.com/in/alex16jpv/",
     website: "https://www.alexpiral.com",
   },
 };
@@ -37,7 +37,15 @@ export const workExperiences: WorkExperience[] = [
     endDate: "2022-12-31",
     description:
       "Collaborated on projects for clients such as Identifee and Homecu, facilitating the development of scalable platforms. Utilized technologies including Node.js, React.js, CSS, and SQL databases (specifically PostgreSQL). Proficient in handling queries and ORM tools like Sequelize. Proficient in API development and experienced in utilizing GraphQL for efficient data retrieval.",
-    technologies: ["Node.js", "React", "CSS", "GraphQL", "SQL", "PostgreSQL", "Sequelize"],
+    technologies: [
+      "Node.js",
+      "React",
+      "CSS",
+      "GraphQL",
+      "SQL",
+      "PostgreSQL",
+      "Sequelize",
+    ],
     achievements: [
       "Developed scalable platforms for major clients including Identifee and Homecu",
       "Built responsive frontend interfaces with modern React.js practices",
@@ -53,7 +61,16 @@ export const workExperiences: WorkExperience[] = [
     endDate: "2021-12-31",
     description:
       "Contributed to the development of a platform connecting brands with top social media influencers across various platforms (Twitter, Facebook, Instagram, YouTube, Vine, and Snapchat). Primarily focused on React.js and Node.js development, leveraging AWS services like CodePipeline and Lambda to build a robust platform for seamless brand-influencer collaboration.",
-    technologies: ["Node.js", "Express", "MongoDB", "React", "CSS", "AWS", "Lambda", "CodePipeline"],
+    technologies: [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "React",
+      "CSS",
+      "AWS",
+      "Lambda",
+      "CodePipeline",
+    ],
     achievements: [
       "Built influencer-brand connection platform supporting multiple social media platforms",
       "Implemented AWS serverless architecture with Lambda and CodePipeline",
@@ -69,7 +86,14 @@ export const workExperiences: WorkExperience[] = [
     endDate: "2020-12-31",
     description:
       "Developed a Google Chrome extension to automate dropshipping processes for major e-commerce platforms such as Amazon, eBay, and Best Buy. Successfully processed thousands of orders within minutes. Utilized technologies including Node.js, Python, and AWS services such as Lambda, ECS, and queues to streamline and enhance the dropshipping workflow.",
-    technologies: ["Node.js", "Python", "AWS", "Lambda", "ECS", "Chrome Extension"],
+    technologies: [
+      "Node.js",
+      "Python",
+      "AWS",
+      "Lambda",
+      "ECS",
+      "Chrome Extension",
+    ],
     achievements: [
       "Developed Chrome extension automating dropshipping for major e-commerce platforms",
       "Successfully processed thousands of orders within minutes using automated systems",
