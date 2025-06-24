@@ -62,11 +62,6 @@ const { personalData } = Astro.props;
     background: var(--color-background);
   }
 
-  .container {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-  }
 
   .header-content {
     display: flex;
@@ -82,7 +77,7 @@ const { personalData } = Astro.props;
 
   .name {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
+    font-weight: var(--font-weight-light);
     color: var(--color-text);
     margin-bottom: var(--space-3);
     line-height: 1.1;
@@ -90,20 +85,19 @@ const { personalData } = Astro.props;
   }
 
   .role {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
     margin-bottom: var(--space-6);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: var(--font-size-sm);
   }
 
   .bio {
     font-size: var(--font-size-lg);
     color: var(--color-text-secondary);
     line-height: 1.7;
-    font-weight: 300;
+    font-weight: var(--font-weight-light);
   }
 
   .contact-section {
@@ -120,7 +114,7 @@ const { personalData } = Astro.props;
     background: var(--color-text);
     color: var(--color-background);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     font-size: var(--font-size-sm);
     border-radius: 0;
     transition: all 0.3s ease;

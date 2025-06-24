@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { WorkExperience } from "../types";
 
 interface Props {
@@ -15,30 +16,49 @@ const sortedExperiences = experiences.sort((a, b) => {
 });
 
 const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-  });
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      console.warn(`Invalid date string: ${dateString}`);
+      return "Invalid Date";
+    }
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+    });
+  } catch (error) {
+    console.error(`Error formatting date: ${dateString}`, error);
+    return "Date Error";
+  }
 };
 
 const calculateDuration = (startDate: string, endDate?: string) => {
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
+  try {
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : new Date();
+    
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      console.warn(`Invalid date in duration calculation: start=${startDate}, end=${endDate}`);
+      return "Duration unavailable";
+    }
 
-  const diffInMonths =
-    (end.getFullYear() - start.getFullYear()) * 12 +
-    (end.getMonth() - start.getMonth());
+    const diffInMonths =
+      (end.getFullYear() - start.getFullYear()) * 12 +
+      (end.getMonth() - start.getMonth());
 
-  const years = Math.floor(diffInMonths / 12);
-  const months = diffInMonths % 12;
+    const years = Math.floor(diffInMonths / 12);
+    const months = diffInMonths % 12;
 
-  if (years === 0) {
-    return `${months} month${months !== 1 ? "s" : ""}`;
-  } else if (months === 0) {
-    return `${years} year${years !== 1 ? "s" : ""}`;
-  } else {
-    return `${years} year${years !== 1 ? "s" : ""}, ${months} month${months !== 1 ? "s" : ""}`;
+    if (years === 0) {
+      return `${months} month${months !== 1 ? "s" : ""}`;
+    } else if (months === 0) {
+      return `${years} year${years !== 1 ? "s" : ""}`;
+    } else {
+      return `${years} year${years !== 1 ? "s" : ""}, ${months} month${months !== 1 ? "s" : ""}`;
+    }
+  } catch (error) {
+    console.error(`Error calculating duration: start=${startDate}, end=${endDate}`, error);
+    return "Duration error";
   }
 };
 ---
@@ -60,13 +80,14 @@ const calculateDuration = (startDate: string, endDate?: string) => {
             <div class="experience-header">
               <div class="company-section">
                 {experience.logo && (
-                  <img
+                  <Image
                     src={experience.logo}
                     alt={`${experience.company} logo`}
                     class="company-logo"
                     loading="lazy"
-                    width="40"
-                    height="40"
+                    width={40}
+                    height={40}
+                    format="webp"
                   />
                 )}
                 <div class="company-details">
@@ -76,11 +97,15 @@ const calculateDuration = (startDate: string, endDate?: string) => {
               </div>
 
               <div class="duration-section">
-                <time class="duration-text">
+                <time class="duration-text" datetime={experience.startDate}>
                   {formatDate(experience.startDate)} -{" "}
-                  {experience.endDate
-                    ? formatDate(experience.endDate)
-                    : "Present"}
+                  {experience.endDate ? (
+                    <time datetime={experience.endDate}>
+                      {formatDate(experience.endDate)}
+                    </time>
+                  ) : (
+                    "Present"
+                  )}
                 </time>
                 <span class="duration-length">
                   {calculateDuration(experience.startDate, experience.endDate)}
@@ -124,30 +149,6 @@ const calculateDuration = (startDate: string, endDate?: string) => {
     padding: var(--space-16) 0;
   }
 
-  .container {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: var(--space-12);
-  }
-
-  .section-title {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: var(--space-4);
-  }
-
-  .section-description {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-  }
 
   .experiences-list {
     max-width: 800px;
@@ -196,7 +197,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
 
   .company-name {
     font-size: var(--font-size-xl);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text);
     margin-bottom: var(--space-1);
   }
@@ -204,7 +205,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
   .role-title {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
   }
 
   .duration-section {
@@ -216,7 +217,7 @@ const calculateDuration = (startDate: string, endDate?: string) => {
   .duration-text {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
   }
 
   .duration-length {
@@ -258,22 +259,6 @@ const calculateDuration = (startDate: string, endDate?: string) => {
     font-weight: bold;
   }
 
-  .tech-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    list-style: none;
-  }
-
-  .tech-item {
-    background: var(--color-surface);
-    color: var(--color-text);
-    padding: var(--space-1) var(--space-3);
-    border-radius: var(--border-radius);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    border: 1px solid var(--color-border);
-  }
 
   @media (min-width: 768px) {
     .experience-header {
