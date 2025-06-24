@@ -1,0 +1,313 @@
+---
+import type { WorkExperience } from "../types";
+
+interface Props {
+  experiences: WorkExperience[];
+}
+
+const { experiences } = Astro.props;
+
+// Sort experiences by most recent first
+const sortedExperiences = experiences.sort((a, b) => {
+  const aDate = new Date(a.endDate || "2099-12-31");
+  const bDate = new Date(b.endDate || "2099-12-31");
+  return bDate.getTime() - aDate.getTime();
+});
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+  });
+};
+
+const calculateDuration = (startDate: string, endDate?: string) => {
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date();
+
+  const diffInMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth());
+
+  const years = Math.floor(diffInMonths / 12);
+  const months = diffInMonths % 12;
+
+  if (years === 0) {
+    return `${months} month${months !== 1 ? "s" : ""}`;
+  } else if (months === 0) {
+    return `${years} year${years !== 1 ? "s" : ""}`;
+  } else {
+    return `${years} year${years !== 1 ? "s" : ""}, ${months} month${months !== 1 ? "s" : ""}`;
+  }
+};
+---
+
+<section class="work-experience" id="experience">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-description">
+        Professional journey showcasing my expertise in backend development and
+        system architecture.
+      </p>
+    </header>
+
+    <div class="experiences-list">
+      {
+        sortedExperiences.map((experience, index) => (
+          <article class="experience-item">
+            <div class="experience-header">
+              <div class="company-section">
+                {experience.logo && (
+                  <img
+                    src={experience.logo}
+                    alt={`${experience.company} logo`}
+                    class="company-logo"
+                    loading="lazy"
+                    width="40"
+                    height="40"
+                  />
+                )}
+                <div class="company-details">
+                  <h3 class="company-name">{experience.company}</h3>
+                  <p class="role-title">{experience.role}</p>
+                </div>
+              </div>
+              
+              <div class="duration-section">
+                <time class="duration-text">
+                  {formatDate(experience.startDate)} -{" "}
+                  {experience.endDate
+                    ? formatDate(experience.endDate)
+                    : "Present"}
+                </time>
+                <span class="duration-length">
+                  {calculateDuration(
+                    experience.startDate,
+                    experience.endDate
+                  )}
+                </span>
+              </div>
+            </div>
+
+            <div class="experience-content">
+              <p class="job-description">{experience.description}</p>
+
+              {experience.achievements.length > 0 && (
+                <div class="achievements">
+                  <ul class="achievements-list">
+                    {experience.achievements.map((achievement, achIndex) => (
+                      <li class="achievement-item">
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {experience.technologies.length > 0 && (
+                <div class="technologies">
+                  <ul class="tech-list">
+                    {experience.technologies.map((tech, techIndex) => (
+                      <li class="tech-item">
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-experience {
+    background: var(--color-surface);
+    padding: var(--space-16) 0;
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .experiences-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .experience-item {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-6);
+  }
+
+  .experience-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .experience-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .company-section {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .company-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius);
+    object-fit: contain;
+    background: var(--color-surface);
+    padding: var(--space-1);
+    border: 1px solid var(--color-border);
+  }
+
+  .company-details {
+    flex: 1;
+  }
+
+  .company-name {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .role-title {
+    font-size: var(--font-size-base);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .duration-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .duration-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .duration-length {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  .experience-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .job-description {
+    color: var(--color-text);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+  }
+
+  .achievements-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .achievement-item {
+    position: relative;
+    padding-left: var(--space-4);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .achievement-item::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+  }
+
+  .tech-item {
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    border: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 768px) {
+    .experience-header {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .duration-section {
+      align-items: flex-end;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .company-section {
+      flex: 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .experiences-list {
+      max-width: 900px;
+      gap: var(--space-12);
+    }
+
+    .experience-item {
+      padding-bottom: var(--space-8);
+    }
+  }
+</style>

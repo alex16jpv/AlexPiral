@@ -1,16 +1,132 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import WorkExperience from "../components/WorkExperience.astro";
+import Projects from "../components/Projects.astro";
+import {
+  personalData,
+  workExperiences,
+  projects,
+  seoData,
+} from "../data/portfolio";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout seo={seoData}>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <Header personalData={personalData} />
+
+  <main id="main-content">
+    <WorkExperience experiences={workExperiences} />
+    <Projects projects={projects} />
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-text">
+          © {new Date().getFullYear()} Alexander Valencia. Built with
+          <a
+            href="https://astro.build"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link">Astro</a
+          >
+          and hosted on
+          <a href="https://www.alexpiral.com" class="footer-link"
+            >alexpiral.com</a
+          >
+        </p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#experience" class="footer-nav-link">Experience</a>
+          <a href="#projects" class="footer-nav-link">Projects</a>
+          <a
+            href={`mailto:${personalData.contact.email}`}
+            class="footer-nav-link">Contact</a
+          >
+        </nav>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .footer {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) 0;
+    margin-top: auto;
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-text {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+
+  .footer-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-nav-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    .footer-content {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .footer-nav {
+      justify-content: flex-end;
+    }
+  }
+
+  /* Smooth scrolling for navigation links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+</style>
