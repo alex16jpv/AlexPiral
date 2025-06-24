@@ -104,34 +104,24 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
-    id: "project-1",
-    title: "E-commerce API",
+    id: "4x1000-calculator",
+    title: "Calculadora del 4x1000",
     description:
-      "RESTful API for e-commerce platform with user authentication, product management, and payment processing. Built with Node.js and PostgreSQL.",
-    image: "/images/project-placeholder.svg",
-    githubUrl: "https://github.com/alexpiral/ecommerce-api",
-    liveUrl: "https://api.example.com",
-    technologies: ["Node.js", "Express", "PostgreSQL", "JWT", "Stripe API"],
+      "Financial calculator for Colombia's 4x1000 tax. A web application that helps users calculate the financial transaction tax (4 per thousand) with an intuitive interface and accurate calculations.",
+    liveUrl: "https://calculadora4x1000.alexpiral.com/",
+    githubUrl: "https://github.com/alex16jpv/calculadora-4x1000",
+    technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     isWIP: false,
   },
   {
-    id: "project-2",
-    title: "Task Management System",
+    id: "calculators-hub",
+    title: "Hub de Calculadoras",
     description:
-      "Full-stack task management application with real-time updates, team collaboration features, and advanced filtering capabilities.",
-    githubUrl: "https://github.com/alexpiral/task-manager",
-    liveUrl: "https://tasks.example.com",
-    technologies: ["React", "TypeScript", "Node.js", "Socket.io", "MongoDB"],
+      "A collection of over 20 free calculation tools, organized to support everyday tasks.",
+    liveUrl: "https://calculadoras.alexpiral.com/",
+    githubUrl: "https://github.com/alex16jpv/calculadoras",
+    technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     isWIP: false,
-  },
-  {
-    id: "project-3",
-    title: "Analytics Dashboard",
-    description:
-      "Real-time analytics dashboard for monitoring application metrics and user behavior. Features custom charts and automated reporting.",
-    githubUrl: "https://github.com/alexpiral/analytics-dashboard",
-    technologies: ["Vue.js", "Python", "FastAPI", "PostgreSQL", "Chart.js"],
-    isWIP: true,
   },
 ];
 
