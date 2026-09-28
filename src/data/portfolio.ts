@@ -104,6 +104,27 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    id: "ledger-flow",
+    title: "Ledger Flow",
+    description:
+      "Personal finance app built to catch small daily spending. Log an expense in seconds, set monthly budgets, split shared bills with friends or roommates, and see exactly where your money goes. Installable offline-first PWA with bilingual support (English & Spanish), backed by a Node.js/Express API and MongoDB.",
+    image: "/images/ledgerflow-preview.jpg",
+    liveUrl: "https://ledgerflow.alexpiral.com/",
+    githubUrl: "https://github.com/alex16jpv/ledger-flow",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "TanStack Query",
+      "PWA",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
+    isWIP: false,
+  },
+  {
     id: "4x1000-calculator",
     title: "Calculadora del 4x1000",
     description:
