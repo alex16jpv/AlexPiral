@@ -129,6 +129,7 @@ export const projects: Project[] = [
     title: "Calculadora del 4x1000",
     description:
       "Financial calculator for Colombia's 4x1000 tax. A web application that helps users calculate the financial transaction tax (4 per thousand) with an intuitive interface and accurate calculations.",
+    image: "/images/calculadora-4x1000-preview.png",
     liveUrl: "https://calculadora4x1000.alexpiral.com/",
     githubUrl: "https://github.com/alex16jpv/calculadora-4x1000",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
@@ -139,6 +140,7 @@ export const projects: Project[] = [
     title: "Hub de Calculadoras",
     description:
       "A collection of over 20 free calculation tools, organized to support everyday tasks.",
+    image: "/images/calculadoras-hub-preview.png",
     liveUrl: "https://calculadoras.alexpiral.com/",
     githubUrl: "https://github.com/alex16jpv/calculadoras",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
