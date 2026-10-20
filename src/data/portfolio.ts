@@ -129,6 +129,7 @@ export const projects: Project[] = [
     title: "alexpiral news",
     description:
       "Bilingual (ES/EN) tech news site built for a large, growing archive: on-demand page revalidation, an editorial CMS panel, and a REST API that lets AI agents publish articles.",
+    image: "/images/news-preview.jpg",
     liveUrl: "https://news.alexpiral.com/",
     githubUrl: "https://github.com/alex16jpv/news",
     technologies: [
@@ -145,6 +146,7 @@ export const projects: Project[] = [
     title: "Fortnite Daily Shop",
     description:
       "Daily Fortnite item shop with a countdown to the next rotation, search and filters, detailed item views with shop history, and player stats lookup, on a provider-agnostic data layer.",
+    image: "/images/fortnite-preview.jpg",
     liveUrl: "https://fortnite.alexpiral.com/",
     githubUrl: "https://github.com/alex16jpv/fortnite",
     technologies: ["Astro", "React", "TypeScript", "Tailwind CSS", "Vitest"],
