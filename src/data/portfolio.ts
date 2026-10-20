@@ -125,6 +125,32 @@ export const projects: Project[] = [
     isWIP: false,
   },
   {
+    id: "alexpiral-news",
+    title: "alexpiral news",
+    description:
+      "Bilingual (ES/EN) tech news site built for a large, growing archive: on-demand page revalidation, an editorial CMS panel, and a REST API that lets AI agents publish articles.",
+    liveUrl: "https://news.alexpiral.com/",
+    githubUrl: "https://github.com/alex16jpv/news",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Payload CMS",
+      "PostgreSQL",
+    ],
+    isWIP: false,
+  },
+  {
+    id: "fortnite-daily-shop",
+    title: "Fortnite Daily Shop",
+    description:
+      "Daily Fortnite item shop with a countdown to the next rotation, search and filters, detailed item views with shop history, and player stats lookup, on a provider-agnostic data layer.",
+    liveUrl: "https://fortnite.alexpiral.com/",
+    githubUrl: "https://github.com/alex16jpv/fortnite",
+    technologies: ["Astro", "React", "TypeScript", "Tailwind CSS", "Vitest"],
+    isWIP: false,
+  },
+  {
     id: "4x1000-calculator",
     title: "Calculadora del 4x1000",
     description:
